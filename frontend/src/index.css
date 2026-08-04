@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-ocean-950 text-slate-100 font-sans;
+    background-image: radial-gradient(circle at 50% 50%, #071f38 0%, #020d1a 100%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020d1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  transition: background 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0ea5e9;
+}
+
+/* Leaflet Map Popup Dark Mode Styles */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+  top: 10px !important;
+  right: 10px !important;
+  font-size: 16px !important;
+  font-weight: 700;
+  transition: color 0.15s ease;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: #f43f5e !important;
+  background: transparent !important;
+}
+
+/* Custom glowing effects */
+.glow-card {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-card:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+}
+
+/* Animation overrides */
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
