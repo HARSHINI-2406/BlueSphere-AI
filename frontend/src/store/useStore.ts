@@ -33,13 +33,24 @@ interface AppState {
   setLoading: (loading: boolean) => void;
 }
 
-// Read initial auth states from localStorage if they exist
+// Read initial auth states from localStorage safely
 const storedUser = localStorage.getItem('bluesphere_user');
 const storedToken = localStorage.getItem('bluesphere_token');
 
+let parsedUser = null;
+
+if (storedUser && storedUser !== 'undefined' && storedUser !== 'null') {
+  try {
+    parsedUser = JSON.parse(storedUser);
+  } catch (error) {
+    console.warn('Invalid stored user data. Clearing it.');
+    localStorage.removeItem('bluesphere_user');
+  }
+}
+
 export const useStore = create<AppState>((set) => ({
   // Auth Initial Values
-  user: storedUser ? JSON.parse(storedUser) : null,
+  user: parsedUser,
   token: storedToken || null,
   isAuthenticated: !!storedToken,
   
