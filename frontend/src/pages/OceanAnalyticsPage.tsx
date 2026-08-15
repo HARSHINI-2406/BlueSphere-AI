@@ -143,7 +143,7 @@ export const OceanAnalyticsPage: React.FC = () => {
               <p className="text-[11px] text-slate-500 font-light mt-0.5">Continuous satellite infrared temperature readouts in °C</p>
             </div>
             {data.length > 0 && (
-              <Badge variant="info">Avg: {(data.reduce((acc, curr) => acc + curr.sst, 0) / data.length).toFixed(1)}°C</Badge>
+              <Badge variant="info">Avg: {(data.reduce((acc, curr) => acc + (curr.sst ?? 0), 0) / data.length).toFixed(1)}°C</Badge>
             )}
           </div>
           {loading ? <Skeleton className="w-full h-[280px]" /> : <SSTLineChart data={data} />}
@@ -168,7 +168,7 @@ export const OceanAnalyticsPage: React.FC = () => {
                 </div>
                 <div className="text-right">
                   <span className="font-extrabold text-slate-200">{a.sst}°C</span>
-                  <p className="text-[9px] text-rose-400 font-semibold mt-0.5">{(a.anomaly_score * 100).toFixed(0)}% severity</p>
+                  <p className="text-[9px] text-rose-400 font-semibold mt-0.5">{((a.anomaly_score ?? 0) * 100).toFixed(0)}% severity</p>
                 </div>
               </div>
             ))}
@@ -191,7 +191,7 @@ export const OceanAnalyticsPage: React.FC = () => {
               <p className="text-[11px] text-slate-500 font-light mt-0.5">Biomarker representing phytoplankton density (base of marine food chains)</p>
             </div>
             {data.length > 0 && (
-              <Badge variant="success">Max: {Math.max(...data.map(o => o.chlorophyll)).toFixed(1)} mg/m³</Badge>
+              <Badge variant="success">Max: {Math.max(...data.map(o => o.chlorophyll ?? 0)).toFixed(1)} mg/m³</Badge>
             )}
           </div>
           {loading ? <Skeleton className="w-full h-[280px]" /> : <ChlorophyllAreaChart data={data} />}
@@ -205,7 +205,7 @@ export const OceanAnalyticsPage: React.FC = () => {
               <p className="text-[11px] text-slate-500 font-light mt-0.5">Salt concentration key to osmotic balances and species distributions</p>
             </div>
             {data.length > 0 && (
-              <Badge variant="info">Avg: {(data.reduce((acc, curr) => acc + curr.salinity, 0) / data.length).toFixed(1)} PSU</Badge>
+              <Badge variant="info">Avg: {(data.reduce((acc, curr) => acc + (curr.salinity ?? 0), 0) / data.length).toFixed(1)} PSU</Badge>
             )}
           </div>
           {loading ? <Skeleton className="w-full h-[280px]" /> : <SalinityBarChart data={data} />}
@@ -247,7 +247,7 @@ export const OceanAnalyticsPage: React.FC = () => {
                   <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-950 border border-slate-800 text-[10px] text-slate-300 p-2 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
                     <p className="font-semibold">{new Date(o.timestamp).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}</p>
                     <p>SST: {o.sst}°C</p>
-                    <p>Anomaly Score: {(o.anomaly_score * 100).toFixed(0)}%</p>
+                    <p>Anomaly Score: {((o.anomaly_score ?? 0) * 100).toFixed(0)}%</p>
                   </div>
                 </div>
               );

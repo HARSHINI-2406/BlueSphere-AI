@@ -45,7 +45,7 @@ const CustomTooltip = ({ active, payload, label, suffix = "" }: any) => {
         <p className="font-bold text-slate-400 mb-1">{formatDate(label)}</p>
         {payload.map((item: any, index: number) => (
           <p key={index} className="font-medium" style={{ color: item.color || item.fill }}>
-            {item.name}: <span className="font-semibold text-slate-100">{item.value.toFixed(2)}{suffix}</span>
+            {item.name}: <span className="font-semibold text-slate-100">{(item.value ?? 0).toFixed(2)}{suffix}</span>
           </p>
         ))}
       </div>
