@@ -1,5 +1,5 @@
 # BlueSphere AI
-
+Project Demo : https://drive.google.com/file/d/1r7BKiToNY1wywfJScXPq1nlbgOZJp1C9/view?usp=sharing
 **BlueSphere AI** is a professional AI-driven Unified Data Platform designed for oceanographic, fisheries, and molecular biodiversity insights. It provides real-time geospatial intelligence, anomaly detection, and species distribution modeling to support sustainable marine operations, environmental risk monitoring, and commercial maritime decision-making.
 
 ---
