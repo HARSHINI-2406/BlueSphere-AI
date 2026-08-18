@@ -203,20 +203,20 @@ export const BiodiversityPage: React.FC = () => {
                   const pct = isCoral ? r.coral_bleaching_index : r.microbial_health_index;
                   const label = isCoral ? "Bleaching Stress Index" : "Microbial Density Health";
                   return (
-                    <div key={idx} className="p-3 bg-slate-950/40 border border-slate-850 rounded-xl">
+                    <div key={idx} className="p-3 bg-slate-850 border border-slate-800 rounded-xl">
                       <div className="flex justify-between items-center text-xs font-semibold mb-1.5">
                         <span className="text-slate-300">{r.species_name} ({r.category})</span>
-                        <span className={isCoral ? "text-rose-400" : "text-emerald-400"}>{pct.toFixed(0)}%</span>
+                        <span className={isCoral ? "text-rose-500" : "text-emerald-500"}>{(pct ?? 0).toFixed(0)}%</span>
                       </div>
                       <div className="flex items-center space-x-2 text-[10px] text-slate-400 mb-2">
                         <span>{label}</span>
                         <span>•</span>
-                        <span>Risk level: {r.risk_score.toFixed(0)}%</span>
+                        <span>Risk level: {(r.risk_score ?? 0).toFixed(0)}%</span>
                       </div>
-                      <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
                         <div 
                           className={`h-full rounded-full ${isCoral ? 'bg-rose-500' : 'bg-emerald-500'}`}
-                          style={{ width: `${pct}%` }}
+                          style={{ width: `${pct ?? 0}%` }}
                         ></div>
                       </div>
                     </div>

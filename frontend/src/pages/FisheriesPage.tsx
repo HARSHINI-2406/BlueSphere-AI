@@ -126,8 +126,8 @@ export const FisheriesPage: React.FC = () => {
             ) : latestRec ? (
               <div className="space-y-4">
                 <div className="flex items-baseline space-x-2">
-                  <span className="text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">
-                    {latestRec.predicted_abundance.toFixed(0)}
+                  <span className="text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400 bg-clip-text text-transparent">
+                    {(latestRec.predicted_abundance ?? 0).toFixed(0)}
                   </span>
                   <span className="text-xs text-slate-500 font-bold">/ 100 density</span>
                 </div>
@@ -136,18 +136,19 @@ export const FisheriesPage: React.FC = () => {
                   <span className="text-xs text-slate-400 font-semibold">Yield Probability:</span>
                   <Badge variant={
                     latestRec.abundance_level === "High" ? "success" : 
-                    latestRec.abundance_level === "Medium" ? "warning" : "error"
+                    latestRec.abundance_level === "Medium" ? "warning" : 
+                    latestRec.abundance_level === "Low" ? "error" : "neutral"
                   }>
-                    {latestRec.abundance_level} Abundance
+                    {latestRec.abundance_level ?? "Unknown"} Abundance
                   </Badge>
                 </div>
 
-                <div className="p-3 bg-slate-950/60 border border-slate-800/80 rounded-xl text-xs space-y-1.5">
-                  <span className="font-bold text-cyan-400 flex items-center">
+                <div className="p-3 bg-slate-855 border border-slate-800/80 rounded-xl text-xs space-y-1.5">
+                  <span className="font-bold text-cyan-500 flex items-center">
                     <Sparkles className="h-3.5 w-3.5 mr-1" />
                     Sustainable Recommendation:
                   </span>
-                  <p className="text-slate-300 font-light leading-relaxed">{latestRec.recommendation}</p>
+                  <p className="text-slate-400 font-light leading-relaxed">{latestRec.recommendation ?? "No recommendation available."}</p>
                 </div>
               </div>
             ) : (
@@ -221,26 +222,27 @@ export const FisheriesPage: React.FC = () => {
             </div>
 
             {/* Prediction Output panel */}
-            <div className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 flex flex-col justify-between">
+            <div className="p-4 rounded-2xl bg-slate-850 border border-slate-800/80 flex flex-col justify-between">
               {simResult ? (
                 <div className="space-y-2">
                   <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Simulation Output</span>
                   <div className="flex items-baseline space-x-2">
-                    <span className="text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">
-                      {simResult.score.toFixed(0)}
+                    <span className="text-4xl font-extrabold bg-gradient-to-r from-cyan-400 via-sky-400 to-teal-400 bg-clip-text text-transparent">
+                      {(simResult.score ?? 0).toFixed(0)}
                     </span>
                     <span className="text-[10px] text-slate-500 font-bold">/ 100</span>
                   </div>
                   <div className="flex items-center space-x-1.5 pt-1">
                     <Badge variant={
                       simResult.level === "High" ? "success" : 
-                      simResult.level === "Medium" ? "warning" : "error"
+                      simResult.level === "Medium" ? "warning" : 
+                      simResult.level === "Low" ? "error" : "neutral"
                     }>
-                      {simResult.level} Abundance
+                      {simResult.level ?? "Unknown"} Abundance
                     </Badge>
                   </div>
                   <p className="text-[11px] text-slate-400 font-light leading-relaxed mt-2 italic">
-                    "{simResult.rec}"
+                    "{simResult.rec ?? "No recommendation computed."}"
                   </p>
                 </div>
               ) : (

@@ -48,7 +48,7 @@ export const OceanMap: React.FC<OceanMapProps> = ({ latestObservations }) => {
       html: `
         <div style="position: relative; display: flex; width: 30px; height: 30px; align-items: center; justify-content: center;">
           <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background-color: ${color}; opacity: 0.45; animation: leaflet-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
-          <div style="position: relative; width: 12px; height: 12px; border-radius: 50%; background-color: ${color}; border: 2.5px solid #020d1a; box-shadow: 0 0 12px ${color};"></div>
+          <div style="position: relative; width: 12px; height: 12px; border-radius: 50%; background-color: ${color}; border: 2.5px solid #ffffff; box-shadow: 0 0 12px ${color};"></div>
         </div>
         <style>
           @keyframes leaflet-ping {
@@ -76,12 +76,12 @@ export const OceanMap: React.FC<OceanMapProps> = ({ latestObservations }) => {
       <MapContainer
         center={mapCenter}
         zoom={selectedRegion ? 6 : 5}
-        style={{ width: '100%', height: '100%', background: '#020d1a' }}
+        style={{ width: '100%', height: '100%', background: '#e2eff5' }}
         zoomControl={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
 
         {regions.map((region) => {
@@ -132,14 +132,14 @@ export const OceanMap: React.FC<OceanMapProps> = ({ latestObservations }) => {
                         <div className="flex items-center justify-between">
                           <span className="flex items-center text-slate-400"><Compass className="h-3 w-3 mr-1 text-indigo-400" /> Currents:</span>
                           <span className="font-semibold text-slate-200">
-                            {Math.sqrt(obs.current_u ** 2 + obs.current_v ** 2).toFixed(2)} m/s
+                            {Math.sqrt((obs.current_u ?? 0) ** 2 + (obs.current_v ?? 0) ** 2).toFixed(2)} m/s
                           </span>
                         </div>
                       )}
-                      <div className="flex items-center justify-between pt-1.5 border-t border-slate-800">
-                        <span className="flex items-center text-slate-400"><ShieldAlert className="h-3 w-3 mr-1 text-sky-400" /> Marine Risk:</span>
-                        <span className={`font-bold ${obs.anomaly_score > 0.6 ? 'text-rose-400' : 'text-emerald-400'}`}>
-                          {(obs.anomaly_score * 100).toFixed(0)}%
+                      <div className="flex items-center justify-between pt-1.5 border-t border-slate-850">
+                        <span className="flex items-center text-slate-400"><ShieldAlert className="h-3 w-3 mr-1 text-sky-500" /> Marine Risk:</span>
+                        <span className={`font-bold ${(obs.anomaly_score ?? 0) > 0.6 ? 'text-rose-500' : 'text-emerald-500'}`}>
+                          {((obs.anomaly_score ?? 0) * 100).toFixed(0)}%
                         </span>
                       </div>
                     </div>
@@ -149,7 +149,7 @@ export const OceanMap: React.FC<OceanMapProps> = ({ latestObservations }) => {
 
                   <button
                     onClick={() => setSelectedRegion(region)}
-                    className="w-full mt-3 py-1.5 text-center text-[11px] font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 rounded-md transition-colors"
+                    className="w-full mt-3 py-1.5 text-center text-[11px] font-bold text-slate-5 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 rounded-md transition-colors"
                   >
                     FOCUS ANALYTICS
                   </button>

@@ -89,7 +89,7 @@ export const ProfilePage: React.FC = () => {
         
         {/* Left Side avatar and stats summary panel */}
         <Card className="bg-slate-900/30 border-slate-800/40 p-6 flex flex-col items-center text-center space-y-4 h-fit">
-          <div className="h-20 w-20 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-500 text-slate-950 flex items-center justify-center text-2xl font-black shadow-lg shadow-cyan-500/10">
+          <div className="h-20 w-20 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-500 text-slate-50 flex items-center justify-center text-2xl font-black shadow-lg shadow-cyan-500/10">
             {getInitials()}
           </div>
           <div>

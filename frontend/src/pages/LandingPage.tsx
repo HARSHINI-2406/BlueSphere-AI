@@ -144,7 +144,7 @@ export const LandingPage: React.FC = () => {
               return (
                 <motion.div key={idx} variants={itemVariants}>
                   <Card className="h-full flex flex-col items-start border-slate-800/40 bg-slate-900/30 hover:border-slate-700/60 hover:-translate-y-1 transition-all duration-300">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${feat.color} text-slate-950 mb-4 shadow-sm shadow-cyan-500/5`}>
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${feat.color} text-slate-50 mb-4 shadow-sm shadow-cyan-500/5`}>
                       <Icon className="h-6 w-6" />
                     </div>
                     <h3 className="text-lg font-bold text-slate-200">{feat.title}</h3>

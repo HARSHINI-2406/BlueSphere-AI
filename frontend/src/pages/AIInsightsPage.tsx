@@ -260,7 +260,7 @@ export const AIInsightsPage: React.FC = () => {
                   <div className="flex flex-row md:flex-col justify-between items-baseline md:items-center p-3 rounded-2xl bg-slate-950/60 border border-slate-850 md:min-w-[130px] shrink-0 text-center gap-1">
                     <div>
                       <Gauge className="h-4 w-4 text-cyan-400 mx-auto hidden md:block mb-1" />
-                      <span className="text-2xl font-black text-slate-200">{ins.confidence.toFixed(1)}%</span>
+                      <span className="text-2xl font-black text-slate-200">{(ins.confidence ?? 0).toFixed(1)}%</span>
                       <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Confidence</p>
                     </div>
                     <div className="md:mt-3 border-l md:border-l-0 md:border-t border-slate-800/80 pl-4 md:pl-0 md:pt-2 w-full flex flex-col items-end md:items-center">

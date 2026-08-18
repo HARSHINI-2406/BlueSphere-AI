@@ -5,7 +5,7 @@
 @layer base {
   body {
     @apply bg-ocean-950 text-slate-100 font-sans;
-    background-image: radial-gradient(circle at 50% 50%, #071f38 0%, #020d1a 100%);
+    background-image: radial-gradient(circle at 50% 50%, #f0fbfc 0%, #e2eff5 100%);
     background-attachment: fixed;
   }
 }
@@ -17,17 +17,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #020d1a;
+  background: #f3f8fa;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #bcd8e6;
   border-radius: 9999px;
   transition: background 0.2s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0ea5e9;
+  background: #41a3bc;
 }
 
 /* Leaflet Map Popup Dark Mode Styles */
@@ -58,12 +58,12 @@
 
 /* Custom glowing effects */
 .glow-card {
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 15px rgba(65, 163, 188, 0.08);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glow-card:hover {
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+  box-shadow: 0 0 25px rgba(65, 163, 188, 0.15);
 }
 
 /* Animation overrides */

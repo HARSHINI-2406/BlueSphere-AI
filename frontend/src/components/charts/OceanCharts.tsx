@@ -41,7 +41,7 @@ const formatDate = (dateStr: string) => {
 const CustomTooltip = ({ active, payload, label, suffix = "" }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-slate-950/90 border border-slate-800 p-3 rounded-xl shadow-lg backdrop-blur-sm text-xs">
+      <div className="bg-slate-900 border border-slate-700/60 p-3 rounded-xl shadow-lg backdrop-blur-sm text-xs text-slate-100">
         <p className="font-bold text-slate-400 mb-1">{formatDate(label)}</p>
         {payload.map((item: any, index: number) => (
           <p key={index} className="font-medium" style={{ color: item.color || item.fill }}>
@@ -60,26 +60,26 @@ export const SSTLineChart: React.FC<ChartProps> = ({ data }) => {
     <div className="w-full h-[280px]">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(15, 23, 42, 0.05)" />
           <XAxis 
             dataKey="timestamp" 
             tickFormatter={formatDate} 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           <YAxis 
             domain={['auto', 'auto']} 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           <Tooltip content={<CustomTooltip suffix="°C" />} />
           <Line 
             name="Sea Surface Temperature"
             type="monotone" 
             dataKey="sst" 
-            stroke="#f97316" 
+            stroke="#e26a37" 
             strokeWidth={3}
-            dot={{ r: 2, fill: '#f97316', strokeWidth: 0 }}
+            dot={{ r: 2, fill: '#e26a37', strokeWidth: 0 }}
             activeDot={{ r: 6, strokeWidth: 0 }}
           />
         </LineChart>
@@ -96,27 +96,27 @@ export const ChlorophyllAreaChart: React.FC<ChartProps> = ({ data }) => {
         <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
           <defs>
             <linearGradient id="chloGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-              <stop offset="95%" stopColor="#10b981" stopOpacity={0.0}/>
+              <stop offset="5%" stopColor="#3aa682" stopOpacity={0.3}/>
+              <stop offset="95%" stopColor="#3aa682" stopOpacity={0.0}/>
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(15, 23, 42, 0.05)" />
           <XAxis 
             dataKey="timestamp" 
             tickFormatter={formatDate} 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           <YAxis 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           <Tooltip content={<CustomTooltip suffix=" mg/m³" />} />
           <Area 
             name="Chlorophyll Concentration"
             type="monotone" 
             dataKey="chlorophyll" 
-            stroke="#10b981" 
+            stroke="#3aa682" 
             fillOpacity={1} 
             fill="url(#chloGrad)"
             strokeWidth={2.5}
@@ -133,23 +133,23 @@ export const SalinityBarChart: React.FC<ChartProps> = ({ data }) => {
     <div className="w-full h-[280px]">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(15, 23, 42, 0.05)" />
           <XAxis 
             dataKey="timestamp" 
             tickFormatter={formatDate} 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           <YAxis 
             domain={[28, 'auto']} 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           <Tooltip content={<CustomTooltip suffix=" PSU" />} />
           <Bar 
             name="Salinity Level"
             dataKey="salinity" 
-            fill="#0ea5e9" 
+            fill="#3b9db2" 
             radius={[4, 4, 0, 0]}
           />
         </BarChart>
@@ -167,25 +167,25 @@ export const EnvironmentalCorrelationChart: React.FC<CorrelationProps> = ({ data
     <div className="w-full h-[320px]">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={data} margin={{ top: 15, right: -10, left: -20, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(15, 23, 42, 0.05)" />
           <XAxis 
             dataKey="timestamp" 
             tickFormatter={formatDate} 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           {/* Left Y-Axis for Catch Tonnes */}
           <YAxis 
             yAxisId="left" 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           {/* Right Y-Axis for SST & Chlorophyll */}
           <YAxis 
             yAxisId="right" 
             orientation="right" 
-            tick={{ fill: '#64748b', fontSize: 10 }}
-            stroke="rgba(255,255,255,0.1)"
+            tick={{ fill: '#5a839c', fontSize: 10 }}
+            stroke="rgba(15, 23, 42, 0.08)"
           />
           <Tooltip content={<CustomTooltip />} />
           <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
@@ -194,7 +194,7 @@ export const EnvironmentalCorrelationChart: React.FC<CorrelationProps> = ({ data
             yAxisId="left" 
             name="Catch (Tonnes)" 
             dataKey="catch_tonnes" 
-            fill="#3b82f6" 
+            fill="#4ba3c3" 
             opacity={0.7}
             radius={[3, 3, 0, 0]}
           />
@@ -203,7 +203,7 @@ export const EnvironmentalCorrelationChart: React.FC<CorrelationProps> = ({ data
             name="SST (°C)" 
             type="monotone" 
             dataKey="sst" 
-            stroke="#f97316" 
+            stroke="#e26a37" 
             strokeWidth={2}
             dot={false}
           />
@@ -212,7 +212,7 @@ export const EnvironmentalCorrelationChart: React.FC<CorrelationProps> = ({ data
             name="Chlorophyll (mg/m³)" 
             type="monotone" 
             dataKey="chlorophyll" 
-            stroke="#10b981" 
+            stroke="#3aa682" 
             strokeWidth={2}
             dot={false}
           />

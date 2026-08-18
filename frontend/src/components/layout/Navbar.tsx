@@ -76,7 +76,7 @@ export const Navbar: React.FC = () => {
                 to="/register"
                 className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                   path === '/register' 
-                    ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-slate-950 font-bold hover:opacity-90' 
+                    ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-slate-50 font-bold hover:opacity-90' 
                     : 'text-slate-400 hover:text-slate-200 border border-slate-800'
                 }`}
               >
